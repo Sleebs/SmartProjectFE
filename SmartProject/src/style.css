@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  @font-face {
+    font-family: chillax-light;
+    font-weight: 500;
+    src: url(./fonts/Chillax-Light.otf) format("opentype");
+  }
+  @font-face {
+    font-family: chillax-regular;
+    font-weight: 500;
+    src: url(./fonts/Chillax-Regular.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: chillax-semibold;
+    font-weight: 500;
+    src: url(./fonts/Chillax-Semibold.otf) format("opentype");
+  }
+}
