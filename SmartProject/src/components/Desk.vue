@@ -4,7 +4,7 @@
   <div className="desk bg-success"></div>
 </template>
 
-<style>
+<style scoped>
 .desk {
   position: relative;
   width: 140px;
