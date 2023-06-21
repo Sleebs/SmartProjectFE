@@ -7,9 +7,9 @@ import '@vuepic/vue-datepicker/dist/main.css';
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUser, faClock, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {faUser, faCalendarDays, faBuildingColumns, faScroll, faBook, faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faClock, faSearch);
+library.add(faUser, faCalendarDays, faBuildingColumns, faBook, faScroll, faPeopleGroup);
 
 
 

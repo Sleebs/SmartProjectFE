@@ -1,21 +1,34 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-</script>
+
+</script>-lines-pen
 
 <template>
   <div className="navbar bg-base-100">
     <div className="flex-none ">
-      <a className="btn btn-ghost normal-case text-xl">AGM SMORT</a>
+      <img className="btn btn-ghost normal-case text-xl" src="../../src/assets/images/img.png">
     </div>
     <div class="flex-1 ml-16">
-      <a className="btn btn-ghost normal-case text-xl">AGENDA</a>
+      <a className="btn btn-ghost normal-case text-xl">
+        <font-awesome-icon :icon="['fas', 'book']" />
+        AGENDA</a>
 
-      <a className="btn btn-ghost normal-case text-xl">REPORT</a>
+      <a className="btn btn-ghost normal-case text-xl">
+        <font-awesome-icon :icon="['fas', 'calendar-days']" />
+        REPORT
+      </a>
 
-      <a className="btn btn-ghost normal-case text-xl">PRESENZA</a>
-      <a className="btn btn-ghost normal-case text-xl">UTENTI</a>
+      <a className="btn btn-ghost normal-case text-xl">
+        <font-awesome-icon :icon="['fas', 'people-group']" />
+        PRESENZA</a>
+      <a className="btn btn-ghost normal-case text-xl">
+        <font-awesome-icon :icon="['fas', 'user']" />
 
-      <a className="btn btn-ghost normal-case text-xl">SEDI</a>
+        UTENTI</a>
+
+      <a className="btn btn-ghost normal-case text-xl">
+        <font-awesome-icon :icon="['fas', 'building-columns']" />
+        SEDI</a>
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'scroll']" />
         REGOLE
