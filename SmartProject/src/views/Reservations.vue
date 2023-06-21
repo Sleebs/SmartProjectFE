@@ -5,8 +5,8 @@ import TableRow from "../components/TableRow.vue";
 
 <template>
   <div className="flex justify-around mt-6">
-    <Calendar className="w-1/4" />
-    <div className="flex gap-20 w3/4 flex-col">
+    <Calendar className="w-2/8 items-center" />
+    <div className="flex gap-20 w-6/8 flex-col items-center	">
       <TableRow />
       <TableRow />
       <TableRow />
