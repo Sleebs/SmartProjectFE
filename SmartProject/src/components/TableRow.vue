@@ -3,7 +3,7 @@ import Desk from "./Desk.vue";
 </script>
 
 <template>
-  <div className="flex">
+  <div className="flex ">
     <div className="flex flex-col gap-5">
       <div className="flex gap-3 z-10">
         <Desk />
