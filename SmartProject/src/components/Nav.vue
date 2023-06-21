@@ -13,10 +13,10 @@ import { RouterView } from "vue-router";
         <font-awesome-icon :icon="['fas', 'book']" />
         AGENDA</a>
 
-      <a className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/report" className="btn btn-ghost normal-case text-xl" >
         <font-awesome-icon :icon="['fas', 'calendar-days']" />
         REPORT
-      </a>
+      </RouterLink>
 
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'people-group']" />
