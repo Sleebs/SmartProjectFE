@@ -1,87 +1,102 @@
 <template>
-    <div class="study-room" ref="studyRoom">
-        <div class="table" v-for="table in tables" :key="table.id"
-            :style="{ top: table.top + 'px', left: table.left + 'px', width: '140px', height: '70px' }"
-            @mousedown="startDrag(table, $event)" :class="{ dragging: table.dragging }">
+    <div class="study-room" ref="studyRoom" style="-webkit-user-select: none;">
+        <div class="table" v-for="table in    tables   " :key="table.id"
+            :style="{ top: table.top + 'px', left: table.left + 'px', width: '140px', height: '70px', transform: `rotate(${table.rotationAngle}deg)` }"
+            @click="startDrag(table, $event)" @contextmenu.prevent="stopDrag(table, $event)"
+            :class="{ dragging: table.dragging }" ref="seat" @dblclick.prevent="rotateTable(table)">
             {{ table.label }}
+
+            <div
+                style="width: 40px; height: 40px; margin-left: 36%; margin-top: -130px; background-color: #ddd; border-radius: 5px; border: 1px solid #999;">
+            </div>
         </div>
     </div>
 
     <button @click="addTable">add</button>
-
-    {{ tables }}
 </template>
   
-<script>
-export default {
-    data() {
-        return {
-            tables: [
-                { id: 1, label: 'Table 1', top: 50, left: 50, dragging: false },
-                { id: 2, label: 'Table 2', top: 200, left: 150, dragging: false },
-                { id: 3, label: 'Table 3', top: 250, left: 350, dragging: false },
-            ],
-            draggingTable: null,
-            offset: { x: 0, y: 0 },
-        };
-    },
-    mounted() {
-        // Load positions from local storage
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const studyRoom = ref(null)
+
+const tables = ref([
+    { id: 1, rotationAngle: 0, label: 'Table 1', top: 50, left: 50, dragging: false },
+    { id: 2, rotationAngle: 0, label: 'Table 2', top: 200, left: 150, dragging: false },
+    { id: 3, rotationAngle: 0, label: 'Table 3', top: 250, left: 350, dragging: false },
+]);
+
+const draggingTable = ref(null);
+const offset = ref({ x: 0, y: 0 });
+
+function rotateTable(table) {
+    table.rotationAngle = (table.rotationAngle + 90) % 360;
+}
+
+function renderTable(table) {
+    return h(
+        'div',
+        {
+            class: 'table',
+            style: { top: `${table.top}px`, left: `${table.left}px` }
+        },
+        [
+            h('div', { class: 'table-number' }, table.number),
+            h('span', { class: 'table-coordinates' }, `(${table.left}, ${table.top})`)
+        ]
+    );
+}
+
+function addTable() {
+    tables.value.push({ id: 3, label: 'Table 3', top: 250, left: 350, dragging: false })
+}
+
+function startDrag(table, event) {
+    draggingTable.value = table;
+    offset.value.x = event.pageX - table.left;
+    offset.value.y = event.pageY - table.top;
+    table.dragging = true;
+}
+
+function stopDrag(table, event) {
+    table.dragging = false;
+}
+
+function handleMouseMove(event) {
+    if (draggingTable.value) {
+        const studyRoomBounds = studyRoom.value.getBoundingClientRect();
+        const x = event.pageX - offset.value.x - studyRoomBounds.left;
+        const y = event.pageY - offset.value.y - studyRoomBounds.top;
+        draggingTable.value.left = x;
+        draggingTable.value.top = y;
+
+        // Save positions to local storage
         const savedTables = JSON.parse(localStorage.getItem('tables')) || {};
-        this.tables = this.tables.map(table => ({ ...table, ...savedTables[table.id] }));
+        savedTables[draggingTable.value.id] = { top: y, left: x };
+        localStorage.setItem('tables', JSON.stringify(savedTables));
+    }
+}
 
-        document.addEventListener('mousemove', this.handleMouseMove);
-        document.addEventListener('mouseup', this.handleMouseUp);
-    },
-    beforeUnmount() {
-        document.removeEventListener('mousemove', this.handleMouseMove);
-        document.removeEventListener('mouseup', this.handleMouseUp);
-    },
-    methods: {
-        renderTable(table) {
-            return h(
-                'div',
-                {
-                    class: 'table',
-                    style: { top: `${table.top}px`, left: `${table.left}px` }
-                },
-                [
-                    h('div', { class: 'table-number' }, table.number),
-                    h('span', { class: 'table-coordinates' }, `(${table.left}, ${table.top})`)
-                ]
-            );
-        },
-        addTable() {
-            this.tables.push({ id: 3, label: 'Table 3', top: 250, left: 350, dragging: false })
-        },
-        startDrag(table, event) {
-            this.draggingTable = table;
-            this.offset.x = event.pageX - table.left;
-            this.offset.y = event.pageY - table.top;
-            table.dragging = true;
-        },
-        handleMouseMove(event) {
-            if (this.draggingTable) {
-                const studyRoomBounds = this.$refs.studyRoom.getBoundingClientRect();
-                const x = event.pageX - this.offset.x - studyRoomBounds.left;
-                const y = event.pageY - this.offset.y - studyRoomBounds.top;
-                this.draggingTable.left = x;
-                this.draggingTable.top = y;
+function handleMouseUp() {
+    if (draggingTable.value) {
+        draggingTable.value.dragging = false;
+        draggingTable.value = null;
+    }
+}
 
-                // Save positions to local storage
-                const tables = JSON.parse(localStorage.getItem('tables')) || {};
-                tables[this.draggingTable.id] = { top: y, left: x };
-                localStorage.setItem('tables', JSON.stringify(tables));
-            }
-        },
-        handleMouseUp() {
-            if (this.draggingTable) {
-                this.draggingTable.dragging = false;
-                this.draggingTable = null;
-            }
-        },
-    },
-};
+onMounted(() => {
+    // Load positions from local storage
+    const savedTables = JSON.parse(localStorage.getItem('tables')) || {};
+    tables.value = tables.value.map(table => ({ ...table, ...savedTables[table.id] }));
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+});
 </script>
   
 <style>
