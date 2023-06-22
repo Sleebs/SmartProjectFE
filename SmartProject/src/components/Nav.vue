@@ -1,34 +1,41 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-
-</script>-lines-pen
+</script>
+-lines-pen
 
 <template>
   <div className="navbar bg-base-100">
-    <div className="flex-none ">
-      <img className="btn btn-ghost normal-case text-xl" src="../../src/assets/images/img.png">
-    </div>
+    <RouterLink to="/" className="flex-none ">
+      <img
+        className="btn btn-ghost normal-case text-xl"
+        src="../../src/assets/images/img.png"
+      />
+    </RouterLink>
     <div class="flex-1 ml-16">
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'book']" />
-        AGENDA</a>
+        AGENDA</a
+      >
 
-      <RouterLink to="/report" className="btn btn-ghost normal-case text-xl" >
+      <RouterLink to="/report" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'calendar-days']" />
         REPORT
       </RouterLink>
 
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'people-group']" />
-        PRESENZA</a>
+        PRESENZA</a
+      >
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'user']" />
 
-        UTENTI</a>
+        UTENTI</a
+      >
 
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'building-columns']" />
-        SEDI</a>
+        SEDI</a
+      >
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'scroll']" />
         REGOLE
@@ -36,7 +43,6 @@ import { RouterView } from "vue-router";
     </div>
 
     <div className="flex-none gap-2">
-
       <div className="dropdown dropdown-end">
         <label tabIndex="{0}" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
