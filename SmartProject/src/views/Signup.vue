@@ -48,7 +48,7 @@ function renderTable(table) {
 }
 
 function addTable() {
-    tables.value.push({ id: 3, label: 'Table 3', top: 250, left: 350, dragging: false })
+    tables.value.push({ id: 3, rotationAngle: 0, label: 'Table 3', top: 250, left: 350, dragging: false })
 }
 
 function startDrag(table, event) {
