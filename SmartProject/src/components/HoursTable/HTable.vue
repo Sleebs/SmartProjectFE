@@ -5,7 +5,7 @@ const days = new Array(31); // da prendere dinamicamente;
 </script>
 <template>
   <div className="overflow-x-auto">
-    <table className="table  table-xs table-pin-rows table-pin-cols">
+    <table className="table table-xs table-pin-rows table-pin-cols ">
       <thead>
         <tr>
           <th>Normativo</th>
@@ -13,7 +13,7 @@ const days = new Array(31); // da prendere dinamicamente;
         </tr>
       </thead>
       <tbody>
-        <Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr />
+        <Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr />
       </tbody>
     </table>
   </div>

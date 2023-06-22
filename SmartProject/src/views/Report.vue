@@ -1,22 +1,18 @@
 <script setup lang="ts">
-import ReportCalendar from "../components/ReportCalendar.vue";
+import Signup from "./Signup.vue";
 import Table from "../components/Table/Table.vue";
 import HTable from "../components/HoursTable/HTable.vue";
 </script>
 
 <template>
-  <div className="flex">
-    <div className="w-1/2 flex flex-col items-center">
-      <!-- <div className=" inline-block"> -->
-      <ReportCalendar />
-      <ReportCalendar />
-      <!-- </div> -->
+  <div className="flex w-full h-1/2">
+    <Signup />
+    <div className=" overflow-auto h-full w-3/4">
+      <HTable />
     </div>
-    <div className="w-1/2 ">
-      <HTable className="h-1/2 w-full" />
-
-      <Table className="h-1/2" />
-    </div>
+  </div>
+  <div className="h-1/2 overflow-auto">
+    <Table />
   </div>
 </template>
 

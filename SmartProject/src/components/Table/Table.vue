@@ -3,7 +3,9 @@ import Tr from "./Tr.vue";
 </script>
 
 <template>
-  <table class="table table-xs table-pin-rows table-zebra table-pin-cols">
+  <table
+    class="table table-xs table-pin-rows table-pin-cols table-zebra mah-h-full"
+  >
     <thead>
       <tr>
         <th></th>
@@ -23,7 +25,8 @@ import Tr from "./Tr.vue";
         name="samuele"
         surname="Raposo"
       />
-      <Tr /><Tr />
+      <!-- PAGINAZIONE - NUMERO DIPENDENTI A SECONDA DELLA STANZA -->
+      <Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr /><Tr />
     </tbody>
   </table>
 </template>
