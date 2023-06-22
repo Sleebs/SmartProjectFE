@@ -1,10 +1,7 @@
 <script setup lang="ts">
-// const [avatar] = defineProps<{
-//   avatar?: string;
-// }>();
+const { avatar } = defineProps<{ avatar?: string }>();
 const img =
   "https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-//L'IMMAGINE DEVE ESSERE UNA PROPS PASSATA COME AVATAR
 </script>
 
 <template>
@@ -19,8 +16,7 @@ const img =
       <div className="flex items-center space-x-3">
         <div className="avatar">
           <div className="mask mask-squircle w-12 h-12">
-            <!-- AVATAR IN QUESTO COMPONENTE -->
-            <img :src="img" alt="Avatar Tailwind CSS Component" />
+            <img :src="avatar" alt="Avatar Tailwind CSS Component" />
           </div>
         </div>
         <div>

@@ -18,7 +18,10 @@ import Tr from "./Tr.vue";
       </tr>
     </thead>
     <tbody>
-      <Tr /><Tr /><Tr />
+      <Tr
+        avatar="https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      />
+      <Tr /><Tr />
     </tbody>
   </table>
 </template>

@@ -14,11 +14,13 @@ export default createRouter({
     },
 
     {
-      path: "/login", component: () => import("../views/Login.vue"),
+      path: "/login",
+      component: () => import("../views/Login.vue"),
     },
 
     {
-      path: "/signup", component: () => import("../views/Signup.vue"),
-    }
+      path: "/signup",
+      component: () => import("../views/Signup.vue"),
+    },
   ],
 });
