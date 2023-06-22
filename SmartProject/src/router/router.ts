@@ -8,9 +8,20 @@ export default createRouter({
       component: () => import("../components/Nav.vue"),
       children: [
         { path: "/", component: () => import("../views/Reservations.vue") },
-        // { path: "/user", component: () => import("../views/User.vue") },
-        // { path: "/courier", component: () => import("../views/Courier.vue") },
+        { path: "/sedi", component: () => import("../views/Sedi.vue") },
       ],
     },
+
+    {
+      path: "/login", component: () => import("../views/Login.vue"),
+    },
+
+    {
+      path: "/signup", component: () => import("../views/Signup.vue"),
+    },
+
+    {
+      path: "/prova", component: () => import("../views/Prova.vue"),
+    }
   ],
 });
