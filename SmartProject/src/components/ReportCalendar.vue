@@ -4,7 +4,7 @@
       :preview-format="format" :disabled-week-days="[6, 0]"
       :enable-time-picker="false" :show-selected-dates="true"
       locale="it" cancelText="Annulla" selectText="Conferma"
-      v-model="date" :inline="true" multi-dates multi-dates-limit="10"
+      v-model="date" :inline="true" range :partial-range="false"
       @update:model-value="handleDateSelection"
   />
 </template>

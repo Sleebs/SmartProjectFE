@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div className="desk bg-success"></div>
+  <div className="desk bg-success "></div>
 </template>
 
 <style scoped>

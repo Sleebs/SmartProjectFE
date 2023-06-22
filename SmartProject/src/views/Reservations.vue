@@ -4,9 +4,9 @@ import TableRow from "../components/TableRow.vue";
 </script>
 
 <template>
-  <div className="flex justify-around mt-6">
-    <Calendar className="w-2/8 items-center" />
-    <div className="flex gap-20 w-6/8 flex-col items-center	">
+  <div className="flex justify-around pt-20  ">
+    <Calendar className="w-2/8 items-center h-full" />
+    <div className="flex gap-20 w-6/8 flex-col items-center	h-full bg-gray-200 p-10 rounded-3xl">
       <TableRow />
       <TableRow />
       <TableRow />
