@@ -6,16 +6,12 @@ import { RouterView } from "vue-router";
 <template>
   <div className="navbar bg-base-100">
     <RouterLink to="/" className="flex-none ">
-      <img
-        className="btn btn-ghost normal-case text-xl"
-        src="../../src/assets/images/img.png"
-      />
+      <img className="btn btn-ghost normal-case text-xl" src="../../src/assets/images/img.png" />
     </RouterLink>
     <div class="flex-1 ml-16">
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'book']" />
-        AGENDA</a
-      >
+        AGENDA</a>
 
       <RouterLink to="/report" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'calendar-days']" />
@@ -24,18 +20,16 @@ import { RouterView } from "vue-router";
 
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'people-group']" />
-        PRESENZA</a
-      >
+        PRESENZA</a>
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'user']" />
 
-        UTENTI</a
-      >
+        UTENTI</a>
 
-      <a className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/sedi" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'building-columns']" />
-        SEDI</a
-      >
+        SEDI
+      </RouterLink>
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'scroll']" />
         REGOLE
