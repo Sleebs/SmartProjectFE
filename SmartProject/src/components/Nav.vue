@@ -6,7 +6,10 @@ import { RouterView } from "vue-router";
 <template>
   <div className="navbar bg-base-100">
     <RouterLink to="/" className="flex-none ">
-      <img className="btn btn-ghost normal-case text-xl" src="../../src/assets/images/img.png" />
+      <img
+        className="btn btn-ghost normal-case text-xl"
+        src="../../src/assets/images/img.png"
+      />
     </RouterLink>
     <div class="flex-1 ml-16">
       <RouterLink to="/userList" className="btn btn-ghost normal-case text-xl">
@@ -27,14 +30,11 @@ import { RouterView } from "vue-router";
         <font-awesome-icon :icon="['fas', 'user']" />
         UTENTI
       </RouterLink>
-
-        UTENTI</a>
-
       <RouterLink to="/sedi" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'building-columns']" />
         SEDI
       </RouterLink>
-      <a className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'scroll']" />
         REGOLE
       </RouterLink>
