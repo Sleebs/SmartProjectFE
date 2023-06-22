@@ -1,16 +1,25 @@
 <template>
   <VueDatePicker
-      :min-date="new Date()" :disabled-dates="disabledDates"
-      :preview-format="format" :disabled-week-days="[6, 0]"
-      :enable-time-picker="false" :show-selected-dates="true"
-      locale="it" cancelText="Annulla" selectText="Conferma"
-      v-model="date" :inline="true" range :partial-range="false"
-      @update:model-value="handleDateSelection"
+    :min-date="new Date()"
+    :disabled-dates="disabledDates"
+    :preview-format="format"
+    :disabled-week-days="[6, 0]"
+    :enable-time-picker="false"
+    :show-selected-dates="true"
+    locale="it"
+    cancelText="Annulla"
+    selectText="Conferma"
+    v-model="date"
+    :inline="true"
+    range
+    :partial-range="false"
+    @update:model-value="handleDateSelection"
+    className="inline-block w-fit"
   />
 </template>
 
 <script setup lang="ts">
-import {computed, ref, watch} from 'vue';
+import { computed, ref, watch } from "vue";
 
 const date = ref();
 
@@ -24,44 +33,43 @@ const handleDateSelection = (selectedDates) => {
     const previousDate = selectedDates[selectedDates.length - 2];
 
     // Calcolo la differenza in giorni tra le due date
-    const diffInDays = Math.floor((lastSelectedDate - previousDate) / (1000 * 60 * 60 * 24));
+    const diffInDays = Math.floor(
+      (lastSelectedDate - previousDate) / (1000 * 60 * 60 * 24)
+    );
 
     // Controllo se la differenza in giorni è uguale o superiore a 7
     if (diffInDays >= 7) {
       // Rimuovi l'ultima data selezionata
       date.value = selectedDates.slice(0, selectedDates.length - 1);
-      console.log('Non è consentito selezionare 7 giorni consecutivi.');
+      console.log("Non è consentito selezionare 7 giorni consecutivi.");
     }
     // Aggiorna le date selezionate
     date.value = selectedDates;
-  }else{
-    console.log("seleziona almeno 2 gg")
+  } else {
+    console.log("seleziona almeno 2 gg");
   }
-
 };
 const format = (date) => {
   //serve per non far comparire le date selezionate di fianco al button di conferma
-  return
-}
+  return;
+};
 
 // For demo purposes disables the next 2 days from the current date
 //bisogna passargli array giorni festivi
 const disabledDates = computed(() => {
   const today = new Date();
 
-  const tomorrow = new Date(today)
-  tomorrow.setDate(tomorrow.getDate() + 1)
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
 
   const afterTomorrow = new Date(tomorrow);
   afterTomorrow.setDate(tomorrow.getDate() + 1);
 
-  return [tomorrow, afterTomorrow]
-})
-
+  return [tomorrow, afterTomorrow];
+});
 </script>
 
 <style>
-
 .dp__theme_light {
   --dp-text-color: #212121;
   --dp-hover-color: #f3f3f3;
@@ -86,8 +94,8 @@ const disabledDates = computed(() => {
 
 :root {
   /*General*/
-  --dp-font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans",
-  "Helvetica Neue", sans-serif;
+  --dp-font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+    oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --dp-border-radius: 40px; /*Configurable border-radius*/
   --dp-cell-border-radius: 40px; /*Specific border radius for the calendar cell*/
   --dp-common-transition: all 0.1s ease-in; /*Generic transition applied on buttons and calendar cells*/
@@ -119,12 +127,15 @@ const disabledDates = computed(() => {
 
   /*Transitions*/
   --dp-animation-duration: 0.1s; /*Transition duration*/
-  --dp-menu-appear-transition-timing: cubic-bezier(.4, 0, 1, 1); /*Timing on menu appear animation*/
+  --dp-menu-appear-transition-timing: cubic-bezier(
+    0.4,
+    0,
+    1,
+    1
+  ); /*Timing on menu appear animation*/
   --dp-transition-timing: ease-out; /*Timing on slide animations*/
-
 }
-.dp__calendar_row{
+.dp__calendar_row {
   gap: 5px;
 }
 </style>
-

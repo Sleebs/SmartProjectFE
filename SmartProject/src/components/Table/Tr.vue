@@ -1,11 +1,15 @@
 <script setup lang="ts">
-const { avatar } = defineProps<{ avatar?: string }>();
-const img =
-  "https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const { avatar } = defineProps<{
+  avatar?: string;
+  name?: string;
+  surname?: string;
+  location?: string;
+  date?: Date;
+}>();
 </script>
 
 <template>
-  <tr>
+  <tr className="">
     <th></th>
     <td>
       <label>
@@ -19,20 +23,15 @@ const img =
             <img :src="avatar" alt="Avatar Tailwind CSS Component" />
           </div>
         </div>
-        <div>
-          <div className="font-bold">Hart Hagerty</div>
-          <div className="text-sm opacity-50">United States</div>
-        </div>
       </div>
     </td>
 
-    <td>Cy Ganderton</td>
-    <td>Quality Control Specialist</td>
-    <td>Littel, Schaden and Vandervort</td>
-    <td>Canada</td>
-    <td>12/16/2020</td>
-    <td>Blue</td>
-    <th>1</th>
+    <td>{{ name }}</td>
+    <td>{{ surname }}</td>
+    <td>{{ location }}</td>
+    <td>Data</td>
+    <td>Ora</td>
+    <th></th>
   </tr>
 </template>
 

@@ -7,19 +7,21 @@ import Tr from "./Tr.vue";
     <thead>
       <tr>
         <th></th>
-        <td>Check</td>
+        <td></td>
+        <td></td>
         <td>Name</td>
-        <td>Job</td>
-        <td>company</td>
-        <td>location</td>
-        <td>Last Login</td>
-        <td>Favorite Color</td>
+        <td>Cognome</td>
+        <td>Luogo</td>
+        <td>Data</td>
+        <td>Ora</td>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <Tr
         avatar="https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        name="samuele"
+        surname="Raposo"
       />
       <Tr /><Tr />
     </tbody>
