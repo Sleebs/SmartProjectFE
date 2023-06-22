@@ -9,6 +9,7 @@ export default createRouter({
       children: [
         { path: "/", component: () => import("../views/Reservations.vue") },
         { path: "/report", component: () => import("../views/Report.vue") },
+        { path: "/userList", component: () => import("../views/UserList.vue") },
 
         // { path: "/user", component: () => import("../views/User.vue") },
         // { path: "/courier", component: () => import("../views/Courier.vue") },
