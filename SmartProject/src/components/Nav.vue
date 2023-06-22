@@ -13,7 +13,7 @@ import { RouterView } from "vue-router";
         <font-awesome-icon :icon="['fas', 'book']" />
         AGENDA</a>
 
-      <RouterLink to="/report" className="btn btn-ghost normal-case text-xl" >
+      <RouterLink to="/report" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'calendar-days']" />
         REPORT
       </RouterLink>
@@ -41,14 +41,10 @@ import { RouterView } from "vue-router";
         <label tabIndex="{0}" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img
-              src="https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
+              src="https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           </div>
         </label>
-        <ul
-          tabIndex="{0}"
-          className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-        >
+        <ul tabIndex="{0}" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
           <li>
             <a className="justify-between">
               Profile
@@ -56,7 +52,7 @@ import { RouterView } from "vue-router";
             </a>
           </li>
           <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <li><router-link to="/login">Logout</router-link></li>
         </ul>
       </div>
     </div>
