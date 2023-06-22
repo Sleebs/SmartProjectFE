@@ -9,20 +9,24 @@ import { RouterView } from "vue-router";
       <img className="btn btn-ghost normal-case text-xl" src="../../src/assets/images/img.png" />
     </RouterLink>
     <div class="flex-1 ml-16">
-      <a className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/userList" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'book']" />
-        AGENDA</a>
+        AGENDA
+      </RouterLink>
 
       <RouterLink to="/report" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'calendar-days']" />
         REPORT
       </RouterLink>
 
-      <a className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'people-group']" />
-        PRESENZA</a>
-      <a className="btn btn-ghost normal-case text-xl">
+        PRESENZA
+      </RouterLink>
+      <RouterLink to="" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'user']" />
+        UTENTI
+      </RouterLink>
 
         UTENTI</a>
 
@@ -33,7 +37,7 @@ import { RouterView } from "vue-router";
       <a className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'scroll']" />
         REGOLE
-      </a>
+      </RouterLink>
     </div>
 
     <div className="flex-none gap-2 ">

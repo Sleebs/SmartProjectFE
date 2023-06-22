@@ -10,6 +10,7 @@ export default createRouter({
         { path: "/", component: () => import("../views/Reservations.vue") },
         { path: "/sedi", component: () => import("../views/Sedi.vue") },
         { path: "/report", component: () => import("../views/Report.vue") },
+        { path: "/userList", component: () => import("../views/UserList.vue") }
       ],
     },
 
