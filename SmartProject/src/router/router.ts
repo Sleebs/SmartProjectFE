@@ -19,10 +19,6 @@ export default createRouter({
 
     {
       path: "/signup", component: () => import("../views/Signup.vue"),
-    },
-
-    {
-      path: "/prova", component: () => import("../views/Prova.vue"),
     }
   ],
 });
