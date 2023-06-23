@@ -22,7 +22,7 @@ import { RouterView } from "vue-router";
         REPORT
       </RouterLink>
 
-      <RouterLink to="" className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/" className="btn btn-ghost normal-case text-xl">
         <font-awesome-icon :icon="['fas', 'people-group']" />
         PRESENZA
       </RouterLink>
