@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ModalModify from "../components/ModalModify.vue";
 let titolo = ["Nome", "Cognome", "Email", "Responsabile"];
 let listUsers = [
   {
@@ -87,7 +88,29 @@ let listUsers = [
       <tbody>
         <tr v-for="list in listUsers" :key="list.id">
           <td class="text-primary">
-            <font-awesome-icon :icon="['fas', 'circle-info']" />
+            <div class="dropdown">
+              <label tabindex="0"
+                ><font-awesome-icon :icon="['fas', 'ellipsis-vertical']"
+              /></label>
+              <ul
+                tabindex="0"
+                class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 h-30"
+              >
+                <li>
+                  <button
+                    class="btn btn-link btn-xm flex content-center"
+                    onclick="my_modal_4.showModal()"
+                  >
+                    <font-awesome-icon :icon="['fas', 'pencil']" /> Modifica
+                  </button>
+                </li>
+                <li>
+                  <button class="btn btn-link btn-xm flex content-center">
+                    <font-awesome-icon :icon="['fas', 'trash']" /> Elimina
+                  </button>
+                </li>
+              </ul>
+            </div>
           </td>
           <td>{{ list.nome }}</td>
           <td>{{ list.cognome }}</td>
@@ -100,6 +123,7 @@ let listUsers = [
       </tbody>
     </table>
   </div>
+  <ModalModify></ModalModify>
 </template>
 
 <style></style>
