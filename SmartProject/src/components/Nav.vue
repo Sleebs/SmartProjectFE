@@ -1,62 +1,72 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+import { onMounted, ref } from "vue";
+
+const utente = ref<any>();
+
+onMounted(() => {
+  const user = {
+    name: "lmao",
+    surname: "lmao",
+  };
+  fetch("http://localhost:8080/api/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  })
+    .then((resp) => resp.json())
+    .then((data) => (utente.value = data)) // fare il pars del nome in position e date della sedia
+    .catch((err) => console.error(err));
+});
 </script>
 
 <template>
   <div className="navbar bg-base-100">
-    <RouterLink to="/"  className="flex-none ">
+    <RouterLink to="/" className="flex-none ">
       <img
         className="btn btn-ghost normal-case text-xl"
         src="../../src/assets/images/img.png"
       />
     </RouterLink>
     <div class="flex-1 ml-16">
-
-      <routerLink to="/userList" >
+      <routerLink to="/userList">
         <a className="btn btn-ghost normal-case text-xl">
-
-        <font-awesome-icon :icon="['fas', 'book']" />
-        AGENDA
+          <font-awesome-icon :icon="['fas', 'book']" />
+          AGENDA
         </a>
-
       </routerLink>
-      <RouterLink to="/report" >
+      <RouterLink to="/report">
         <a className="btn btn-ghost normal-case text-xl">
-
-        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-        REPORT
+          <font-awesome-icon :icon="['fas', 'calendar-days']" />
+          REPORT
         </a>
       </RouterLink>
 
-      <RouterLink to="/" >
+      <RouterLink to="/">
         <a className="btn btn-ghost normal-case text-xl">
-
-        <font-awesome-icon :icon="['fas', 'people-group']" />
+          <font-awesome-icon :icon="['fas', 'people-group']" />
           PRESENZA
-
         </a>
       </RouterLink>
 
       <RouterLink to="">
         <a className="btn btn-ghost normal-case text-xl">
-
-        <font-awesome-icon :icon="['fas', 'user']" />
-        UTENTI
-        </a>
-
-      </RouterLink>
-      <RouterLink to="/sedi" >
-        <a className="btn btn-ghost normal-case text-xl">
-
-        <font-awesome-icon :icon="['fas', 'building-columns']" />
-        SEDI
+          <font-awesome-icon :icon="['fas', 'user']" />
+          UTENTI
         </a>
       </RouterLink>
-      <RouterLink to="/" >
+      <RouterLink to="/sedi">
         <a className="btn btn-ghost normal-case text-xl">
-
-        <font-awesome-icon :icon="['fas', 'scroll']" />
-        REGOLE
+          <font-awesome-icon :icon="['fas', 'building-columns']" />
+          SEDI
+        </a>
+      </RouterLink>
+      <RouterLink to="/">
+        <a className="btn btn-ghost normal-case text-xl">
+          <font-awesome-icon :icon="['fas', 'scroll']" />
+          REGOLE
         </a>
       </RouterLink>
     </div>
@@ -89,6 +99,4 @@ import { RouterView } from "vue-router";
   <RouterView></RouterView>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

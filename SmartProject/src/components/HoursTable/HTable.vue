@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Tr from "./Tr.vue";
 
-const days = new Array(31); // da prendere dinamicamente;
+const days = new Array(30); // da prendere dinamicamente;
 </script>
 <template>
   <div className="overflow-x-auto">
@@ -9,7 +9,8 @@ const days = new Array(31); // da prendere dinamicamente;
       <thead>
         <tr>
           <th>Normativo</th>
-          <th v-for="(day, i) in days">{{ i }}</th>
+          <th>Nome</th>
+          <th v-for="(day, i) in days">{{ i + 1 }}</th>
         </tr>
       </thead>
       <tbody>
