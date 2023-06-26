@@ -1,42 +1,63 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 </script>
--lines-pen
 
 <template>
   <div className="navbar bg-base-100">
-    <RouterLink to="/" className="flex-none ">
+    <RouterLink to="/"  className="flex-none ">
       <img
         className="btn btn-ghost normal-case text-xl"
         src="../../src/assets/images/img.png"
       />
     </RouterLink>
     <div class="flex-1 ml-16">
-      <RouterLink to="/userList" className="btn btn-ghost normal-case text-xl">
+
+      <routerLink to="/userList" >
+        <a className="btn btn-ghost normal-case text-xl">
+
         <font-awesome-icon :icon="['fas', 'book']" />
         AGENDA
-      </RouterLink>
+        </a>
 
-      <RouterLink to="/report" className="btn btn-ghost normal-case text-xl">
+      </routerLink>
+      <RouterLink to="/report" >
+        <a className="btn btn-ghost normal-case text-xl">
+
         <font-awesome-icon :icon="['fas', 'calendar-days']" />
         REPORT
+        </a>
       </RouterLink>
 
-      <RouterLink to="/" className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/" >
+        <a className="btn btn-ghost normal-case text-xl">
+
         <font-awesome-icon :icon="['fas', 'people-group']" />
-        PRESENZA
+          PRESENZA
+
+        </a>
       </RouterLink>
-      <RouterLink to="" className="btn btn-ghost normal-case text-xl">
+
+      <RouterLink to="">
+        <a className="btn btn-ghost normal-case text-xl">
+
         <font-awesome-icon :icon="['fas', 'user']" />
         UTENTI
+        </a>
+
       </RouterLink>
-      <RouterLink to="/sedi" className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/sedi" >
+        <a className="btn btn-ghost normal-case text-xl">
+
         <font-awesome-icon :icon="['fas', 'building-columns']" />
         SEDI
+        </a>
       </RouterLink>
-      <RouterLink to="/" className="btn btn-ghost normal-case text-xl">
+      <RouterLink to="/" >
+        <a className="btn btn-ghost normal-case text-xl">
+
         <font-awesome-icon :icon="['fas', 'scroll']" />
         REGOLE
+        </a>
       </RouterLink>
     </div>
 
@@ -68,4 +89,6 @@ import { RouterView } from "vue-router";
   <RouterView></RouterView>
 </template>
 
-<style></style>
+<style scoped>
+
+</style>

@@ -126,4 +126,4 @@ let listUsers = [
   <ModalModify></ModalModify>
 </template>
 
-<style></style>
+<style scoped></style>
