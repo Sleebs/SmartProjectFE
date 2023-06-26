@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ModalModify from "../components/ModalModify.vue";
+import ModalAdd from "../components/ModalAdd.vue";
 let titolo = ["Nome", "Cognome", "Email", "Responsabile"];
 let listUsers = [
   {
@@ -71,10 +72,12 @@ let listUsers = [
       <thead class="text-primary">
         <tr>
           <th>
-            <font-awesome-icon
-              :icon="['fas', 'circle-plus']"
-              style="font-size: large"
-            />
+            <button onclick="my_modal_3.showModal()">
+              <font-awesome-icon
+                :icon="['fas', 'circle-plus']"
+                style="font-size: large"
+              />
+            </button>
           </th>
           <th>Nome</th>
           <th>Cognome</th>
@@ -124,6 +127,7 @@ let listUsers = [
     </table>
   </div>
   <ModalModify></ModalModify>
+  <ModalAdd></ModalAdd>
 </template>
 
 <style scoped></style>

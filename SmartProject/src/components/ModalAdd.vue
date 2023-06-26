@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <dialog id="my_modal_4" class="modal">
+  <dialog id="my_modal_3" class="modal">
     <form method="dialog" class="modal-box w-11/12 max-w-5xl">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
         ✕
@@ -86,23 +86,13 @@
           />
         </div>
       </div>
-      <div
-        class="flex text-primary"
-        style="margin-left: 11.5%; padding-top: 2%"
-      >
-        <p>Postazione A1</p>
-      </div>
-      <div class="flex justify-end" style="margin-right: 12%">
-        <p class="text-primary font-bold">Admin</p>
-        <input type="checkbox" class="checkbox" style="margin-right: 3%" />
-        <input type="checkbox" class="checkbox" />
-        <p class="text-error font-bold">Disabilita</p>
-      </div>
-      <div class="flex justify-end" style="margin-right: 9%; padding: 2%">
-        <button class="btn btn-sm text-primary" style="margin-right: 3%">
-          Aggiorna
+      <div class="flex justify-end">
+        <button
+          class="btn btn-sm text-primary"
+          style="margin-top: 2%; margin-right: 11%"
+        >
+          Aggiungi
         </button>
-        <button class="btn btn-sm text-primary">Cancella</button>
       </div>
     </form>
   </dialog>
