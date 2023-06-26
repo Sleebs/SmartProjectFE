@@ -13,7 +13,7 @@ export const useRoomStore = defineStore("rooms", () => {
       body: JSON.stringify(idRoom),
     })
       .then((resp) => resp.json())
-      .then((data) => (room.value = data))
+      .then((data) => (room.value = data)) // fare il pars del nome in position e date della sedia
       .catch((err) => console.error(err));
   }
 
@@ -21,8 +21,13 @@ export const useRoomStore = defineStore("rooms", () => {
 });
 
 interface Room {
-  auth: string;
   name: string;
-  surname: string;
-  site: string;
+  maxSits: number;
+  sits: Array<Sit | null>;
+}
+
+interface Sit {
+  name: String; // V o F
+  position: number;
+  date: Date | null;
 }
