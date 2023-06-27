@@ -17,7 +17,7 @@ const date = ref();
 watch(date, (newVal) => {
   //console.log(newVal);
 });
-const handleDateSelection = (selectedDates) => {
+const handleDateSelection = (selectedDates : any) => {
   // Controllo solo se sono stati selezionati almeno 2 giorni
   if (selectedDates.length >= 2) {
     const lastSelectedDate = selectedDates[selectedDates.length - 1];
@@ -39,7 +39,7 @@ const handleDateSelection = (selectedDates) => {
   }
 
 };
-const format = (date) => {
+const format = (date : any) => {
   //serve per non far comparire le date selezionate di fianco al button di conferma
   return
 }
