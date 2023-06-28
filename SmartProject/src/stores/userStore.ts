@@ -43,17 +43,18 @@ export const useUserStore = defineStore("user", () => {
       .catch((err) => console.error(err));
   }
   async function allUsers(): Promise<User[]> {
-    fetch("http://localhost:8080/api/getAllUsers" , {
+    fetch("http://localhost:8080/api/getAllUsers", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Autorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXJjby5zdGVmYW5pQGFnbXNvbHV0aW9ucy5uZXQiLCJpYXQiOjE2ODc5NTc4MzAsImV4cCI6MTY4ODA0NDIzMH0.H_-U6s4v1R1CgfxI0FdV3CFkuDCC0G3szV4_-XkLQAp1VS50Vx6-hzqRAWxkc1Fd6d1wrExgWh42CubrCPxVHA"
+        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXJjby5zdGVmYW5pQGFnbXNvbHV0aW9ucy5uZXQiLCJpYXQiOjE2ODc5NTc4MzAsImV4cCI6MTY4ODA0NDIzMH0.H_-U6s4v1R1CgfxI0FdV3CFkuDCC0G3szV4_-XkLQAp1VS50Vx6-hzqRAWxkc1Fd6d1wrExgWh42CubrCPxVHA"
       }
     })
-      .then((resp) => resp.json)
-      .then((data: any) => {
-        users.value = data;
-      })
+      .then((resp) => resp.json())
+      .then((data) => {users.value = data
+        console.log(users.value);
+        
+      }) // fare il pars del nome in position e date della sedia
       .catch((err) => console.error(err));
   }
 
@@ -64,7 +65,7 @@ interface ActiveUser {
   token: string;
   id: number;
   firstName: string;
-  username: string;
+  username  : string;
   lastName: string;
   phoneNumber: string;
   role: [ string ];
@@ -77,8 +78,18 @@ interface User {
   username: string;
   lastName: string;
   phoneNumber: string;
-  role: [ string ];
+  roles: Role;
   site: string;
+}
+
+interface Role {
+  id: number;
+  name: ERole;
+}
+
+enum ERole {
+  "Milano",
+  "Torino"
 }
 
 interface LoginRequest {
