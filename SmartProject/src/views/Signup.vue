@@ -1,39 +1,35 @@
 <template>
   <div class="study-room" ref="studyRoom" style="-webkit-user-select: none">
-    <div
-      class="table"
-      v-for="table in tables"
-      :key="table.id"
-      :style="{
-        top: table.top + 'px',
-        left: table.left + 'px',
-        width: '140px',
-        height: '70px',
-        transform: `rotate(${table.rotationAngle}deg)`,
-      }"
-      @click="startDrag(table, $event)"
-      @contextmenu.prevent="stopDrag(table, $event)"
-      :class="{ dragging: table.dragging }"
-      ref="seat"
-      @dblclick.prevent="rotateTable(table)"
-    >
-      {{ table.label }}
+    <div class="table" v-for="table in tables" :key="table" :style="{
+      top: table.top + 'px',
+      left: table.left + 'px',
+      width: '100px',
+      height: '50px',
+      transform: `rotate(${table.rotationAngle}deg)`,
+    }" @click="startDrag(table, $event)" @contextmenu.prevent="stopDrag(table, $event)"
+      :class="{ dragging: table.dragging }" ref="seat" @dblclick.prevent="rotateTable(table)">
+      <p style="margin-top: -16px;" :style="{ transform: `rotate(${-table.rotationAngle}deg)` }">{{ table.label }}</p>
 
-      <div
-        style="
-          width: 40px;
-          height: 40px;
+      <div style="
+          width: 30px;
+          height: 18px;
           margin-left: 36%;
-          margin-top: -130px;
+          margin-top: -75px;
           background-color: #ddd;
           border-radius: 5px;
           border: 1px solid #999;
-        "
-      ></div>
+        "></div>
     </div>
   </div>
 
-  <button @click="addTable">add</button>
+  <div v-if="showInput" className="m-5">
+    <input v-model="inputValue" type="text" />
+    <button @click="addTable">Save</button>
+  </div>
+
+  <button className="btn btn-primary m-4" @click="showInput = true">add</button>
+
+  <button className="btn btn-primary m-4" @click="removeTable">remove</button>
 </template>
 
 <script setup>
@@ -41,32 +37,9 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const studyRoom = ref(null);
 
-const tables = ref([
-  {
-    id: 1,
-    rotationAngle: 0,
-    label: "Table 1",
-    top: 50,
-    left: 50,
-    dragging: false,
-  },
-  {
-    id: 2,
-    rotationAngle: 0,
-    label: "Table 2",
-    top: 200,
-    left: 150,
-    dragging: false,
-  },
-  {
-    id: 3,
-    rotationAngle: 0,
-    label: "Table 3",
-    top: 250,
-    left: 350,
-    dragging: false,
-  },
-]);
+const tables = ref([]);
+const showInput = ref(false)
+const inputValue = ref('')
 
 const draggingTable = ref(null);
 const offset = ref({ x: 0, y: 0 });
@@ -95,12 +68,22 @@ function renderTable(table) {
 
 function addTable() {
   tables.value.push({
-    id: 3,
     rotationAngle: 0,
-    label: "Table 3",
+    label: inputValue.value,
     top: 250,
     left: 350,
     dragging: false,
+  });
+  showInput = false
+}
+
+function removeTable() {
+  tables.value.pop();
+}
+
+function saveData() {
+  tables.array.forEach(element => {
+
   });
 }
 
@@ -162,6 +145,7 @@ onBeforeUnmount(() => {
   height: 400px;
   background-color: #f2f2f2;
   border: 1px solid #ccc;
+  margin: 20px;
 }
 
 .table {
