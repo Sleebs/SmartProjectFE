@@ -10,7 +10,6 @@ const { users } = storeToRefs(userStore)
 userStore.allUsers()
 
 let titolo = ["Nome", "Cognome", "Email", "Responsabile"];
-let listUsers = [];
 </script>
 
 <template>
@@ -26,14 +25,12 @@ let listUsers = [];
           <th>Nome</th>
           <th>Cognome</th>
           <th>Email</th>
-          <th>Responsabile</th>
           <th>Sede</th>
           <th>Tipo utente</th>
-          <th>Postazione</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="list in listUsers" :key="list.id">
+        <tr v-for="u in users">
           <td class="text-primary">
             <div class="dropdown">
               <label tabindex="0"><font-awesome-icon :icon="['fas', 'ellipsis-vertical']" /></label>
@@ -51,13 +48,11 @@ let listUsers = [];
               </ul>
             </div>
           </td>
-          <td>{{ list.nome }}</td>
-          <td>{{ list.cognome }}</td>
-          <td>{{ list.email }}</td>
-          <td>{{ list.resp }}</td>
-          <td>{{ list.sede }}</td>
-          <td>{{ list.tipoUser }}</td>
-          <td>{{ list.post }}</td>
+          <td>{{ u.firstName }}</td>
+          <td>{{ u.lastName }}</td>
+          <td>{{ u.username }}</td>
+          <td>{{ u.site }}</td>
+          <td>{{ u.role }}</td>
         </tr>
       </tbody>
     </table>

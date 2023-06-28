@@ -21,19 +21,7 @@ function addRoom() {
             idSede: 1
         }
     }
-
-    fetch("http://localhost:8080/api/addRoom", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXJjby5zdGVmYW5pQGFnbXNvbHV0aW9ucy5uZXQiLCJpYXQiOjE2ODc5NDg3OTUsImV4cCI6MTY4ODAzNTE5NX0.DG35jIGjyon68PJ2Be2PuClcRJ68ZDkwY5Ofcq79p5vD4zYsoGh4SIQWfhJLK8PyqupW5FFaE3R7qz6W9prI9g"
-        },
-        body: JSON.stringify(newRoom),
-    })
-        .then((resp) => resp.json())
-        .then((data) => (utente.value = data)) // fare il pars del nome in position e date della sedia
-        .catch((err) => console.error(err));
-
+    roomStore.addRoom(newRoom);
     isOpen.value = false
 }
 </script>
