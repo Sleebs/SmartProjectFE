@@ -51,14 +51,11 @@ export const useUserStore = defineStore("user", () => {
       }
     })
       .then((resp) => resp.json())
-      .then((data) => {users.value = data
-        console.log(users.value);
-        
-      }) // fare il pars del nome in position e date della sedia
+      .then((data) => users.value = data) // fare il pars del nome in position e date della sedia
       .catch((err) => console.error(err));
   }
 
-  return { user, login, allUsers };
+  return { user, users, login, allUsers };
 });
 
 interface ActiveUser {
