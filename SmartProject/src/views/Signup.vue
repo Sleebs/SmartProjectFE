@@ -30,6 +30,8 @@
   <button className="btn btn-primary m-4" @click="showInput = true">add</button>
 
   <button className="btn btn-primary m-4" @click="removeTable">remove</button>
+
+  <button className="btn btn-primary m-4" @click="saveTables">save</button>
 </template>
 
 <script setup>
