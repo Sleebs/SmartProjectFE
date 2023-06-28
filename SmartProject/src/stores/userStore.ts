@@ -2,10 +2,10 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useUserStore = defineStore("user", () => {
-  const user = ref<User | null>(null);
+  const user = ref<ActiveUser | null>(null);
   const users = ref<User[] | null>(null);
 
-  async function login(username: string, password: string): Promise<User> {
+  async function login(username: string, password: string): Promise<ActiveUser> {
     fetch("http://localhost:8080/api/auth/login", {
       method: "POST",
       headers: {
@@ -37,21 +37,21 @@ export const useUserStore = defineStore("user", () => {
       body: JSON.stringify(u),
     })
       .then((resp) => resp.json)
-      .then((data) => {
+      .then((data: any) => {
         console.log(data);
       })
       .catch((err) => console.error(err));
   }
   async function allUsers(): Promise<User[]> {
-    fetch(`http://localhost:8080/api/getAllUsers`, {
+    fetch("http://localhost:8080/api/getAllUsers" , {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Autorization": `Bearer ${user.value?.token}`,
+        "Autorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXJjby5zdGVmYW5pQGFnbXNvbHV0aW9ucy5uZXQiLCJpYXQiOjE2ODc5NTc4MzAsImV4cCI6MTY4ODA0NDIzMH0.H_-U6s4v1R1CgfxI0FdV3CFkuDCC0G3szV4_-XkLQAp1VS50Vx6-hzqRAWxkc1Fd6d1wrExgWh42CubrCPxVHA"
       }
     })
       .then((resp) => resp.json)
-      .then((data) => {
+      .then((data: any) => {
         users.value = data;
       })
       .catch((err) => console.error(err));
@@ -60,15 +60,24 @@ export const useUserStore = defineStore("user", () => {
   return { user, login, allUsers };
 });
 
-interface User {
+interface ActiveUser {
   token: string;
-  id: string;
-  mail: string;
-  name: string;
+  id: number;
+  firstName: string;
   username: string;
-  surname: string;
-  phone: string;
-  role: string;
+  lastName: string;
+  phoneNumber: string;
+  role: [ string ];
+  site: string;
+}
+
+interface User {
+  id: number;
+  firstName: string;
+  username: string;
+  lastName: string;
+  phoneNumber: string;
+  role: [ string ];
   site: string;
 }
 
