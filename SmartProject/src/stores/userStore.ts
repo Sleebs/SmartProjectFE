@@ -11,11 +11,7 @@ export const useUserStore = defineStore("user", () => {
       headers: {
         "Content-Type": "application/json",
       },
-<<<<<<< Updated upstream
-      body: JSON.stringify({username, password}),
-=======
-      body: JSON.stringify({ name, password }),
->>>>>>> Stashed changes
+      body: JSON.stringify({ username, password }),
     })
       .then((resp) => resp.json)
       .then((data: any) => {
@@ -31,9 +27,6 @@ export const useUserStore = defineStore("user", () => {
       .catch((err) => console.error(err));
   }
 
-<<<<<<< Updated upstream
-  return { user, login };
-=======
   async function signUp(u: User): Promise<T> {
     // errore o conferma
     fetch(``, {
@@ -56,7 +49,7 @@ export const useUserStore = defineStore("user", () => {
         "Content-Type": "application/json",
         Autorization: `Bearer ${user.value?.auth}`,
       },
-      body: JSON.stringify({ user }),
+      body: JSON.stringify(user),
     })
       .then((resp) => resp.json)
       .then((data) => {
@@ -66,7 +59,6 @@ export const useUserStore = defineStore("user", () => {
   }
 
   return { user, login, allUsers };
->>>>>>> Stashed changes
 });
 
 interface User {
@@ -74,16 +66,14 @@ interface User {
   id: string;
   mail: string;
   name: string;
-  username: string,
+  username: string;
   surname: string;
   phone: string;
   role: string;
   site: string;
 }
 
-interface LoginRequest{
-  username: string,
-  password: string
+interface LoginRequest {
+  username: string;
+  password: string;
 }
-
-
