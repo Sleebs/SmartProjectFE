@@ -4,10 +4,10 @@ import { onMounted, ref } from "vue";
 
 const utente = ref<any>();
 
-onMounted(() => {
+/*onMounted(() => {
   const user = {
-    name: "lmao",
-    surname: "lmao",
+    username: "marco.stefani@agmsolutions.net",
+    password: "Marco2016!",
   };
   fetch("http://localhost:8080/api/auth/login", {
     method: "POST",
@@ -19,19 +19,16 @@ onMounted(() => {
     .then((resp) => resp.json())
     .then((data) => (utente.value = data)) // fare il pars del nome in position e date della sedia
     .catch((err) => console.error(err));
-});
+});*/
 </script>
 
 <template>
   <div className="navbar bg-base-100">
     <RouterLink to="/" className="flex-none ">
-      <img
-        className="btn btn-ghost normal-case text-xl"
-        src="../../src/assets/images/img.png"
-      />
+      <img className="btn btn-ghost normal-case text-xl" src="../../src/assets/images/img.png" />
     </RouterLink>
     <div class="flex-1 ml-16">
-      <routerLink to="/userList">
+      <routerLink to="/">
         <a className="btn btn-ghost normal-case text-xl">
           <font-awesome-icon :icon="['fas', 'book']" />
           AGENDA
@@ -40,18 +37,11 @@ onMounted(() => {
       <RouterLink to="/report">
         <a className="btn btn-ghost normal-case text-xl">
           <font-awesome-icon :icon="['fas', 'calendar-days']" />
-          REPORT
+          REPORT E PRESENZE
         </a>
       </RouterLink>
 
-      <RouterLink to="/">
-        <a className="btn btn-ghost normal-case text-xl">
-          <font-awesome-icon :icon="['fas', 'people-group']" />
-          PRESENZA
-        </a>
-      </RouterLink>
-
-      <RouterLink to="">
+      <RouterLink to="/userList">
         <a className="btn btn-ghost normal-case text-xl">
           <font-awesome-icon :icon="['fas', 'user']" />
           UTENTI
@@ -76,14 +66,10 @@ onMounted(() => {
         <label tabIndex="{0}" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img
-              src="https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
+              src="https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           </div>
         </label>
-        <ul
-          tabIndex="{0}"
-          className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 z-10"
-        >
+        <ul tabIndex="{0}" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 z-10">
           <li>
             <a className="justify-between">
               Profile

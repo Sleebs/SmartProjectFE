@@ -4,19 +4,20 @@ import { ref } from "vue";
 export const useUserStore = defineStore("user", () => {
   const user = ref<User | null>(null);
 
-  async function login(name: string, password: string): Promise<User> {
+  async function login(username: string, password: string): Promise<User> {
     fetch("http://localhost:8080/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify({username, password}),
     })
       .then((resp) => resp.json)
       .then((data: any) => {
         const u: User = {
           auth: data.auth,
           name: data.name,
+          username: data.username,
           surname: data.surname,
           site: data.site,
         };
@@ -24,12 +25,21 @@ export const useUserStore = defineStore("user", () => {
       })
       .catch((err) => console.error(err));
   }
-  return { user };
+
+  return { user, login };
 });
 
 interface User {
   auth: string;
   name: string;
+  username: string,
   surname: string;
   site: string;
 }
+
+interface LoginRequest{
+  username: string,
+  password: string
+}
+
+
