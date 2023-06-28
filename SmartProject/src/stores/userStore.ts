@@ -16,7 +16,7 @@ export const useUserStore = defineStore("user", () => {
       .then((resp) => resp.json)
       .then((data: any) => {
         const u: User = {
-          auth: data.auth,
+          token: data.token,
           name: data.name,
           username: data.username,
           surname: data.surname,
@@ -43,13 +43,12 @@ export const useUserStore = defineStore("user", () => {
       .catch((err) => console.error(err));
   }
   async function allUsers(): Promise<User[]> {
-    fetch(``, {
-      method: "POST",
+    fetch(`http://localhost:8080/api/getAllUsers`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Autorization: `Bearer ${user.value?.auth}`,
-      },
-      body: JSON.stringify(user),
+        "Autorization": `Bearer ${user.value?.token}`,
+      }
     })
       .then((resp) => resp.json)
       .then((data) => {
@@ -62,7 +61,7 @@ export const useUserStore = defineStore("user", () => {
 });
 
 interface User {
-  auth: string;
+  token: string;
   id: string;
   mail: string;
   name: string;
