@@ -25,8 +25,10 @@ let titolo = ["Nome", "Cognome", "Email", "Responsabile"];
           <th>Nome</th>
           <th>Cognome</th>
           <th>Email</th>
+          <th>Responsabile</th>
           <th>Sede</th>
           <th>Tipo utente</th>
+          <th>Postazione</th>
         </tr>
       </thead>
       <tbody>
@@ -51,8 +53,10 @@ let titolo = ["Nome", "Cognome", "Email", "Responsabile"];
           <td>{{ u.firstName }}</td>
           <td>{{ u.lastName }}</td>
           <td>{{ u.username }}</td>
+          <td></td>
           <td>{{ u.site }}</td>
-          <td>{{ u.role }}</td>
+          <td>{{ u.roles[0].name }}</td>
+          <td></td>
         </tr>
       </tbody>
     </table>
