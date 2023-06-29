@@ -1,7 +1,10 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useRouter } from 'vue-router'
 
 export const useUserStore = defineStore("user", () => {
+  const router = useRouter()
+
   const user = ref<ActiveUser | null>(null);
   const users = ref<User[] | null>(null);
 
@@ -11,19 +14,16 @@ export const useUserStore = defineStore("user", () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({username, password}) 
     })
-      .then((resp) => resp.json)
-      .then((data: any) => {
-        const u: User = {
-          token: data.token,
-          name: data.name,
-          username: data.username,
-          surname: data.surname,
-          site: data.site,
-        };
-        user.value = u;
-      })
+      .then((resp) => resp.json())
+      .then((data) => {
+        user.value = data
+        localStorage.setItem("type", user.value ? user.value.type : '')
+        localStorage.setItem("token", user.value ? user.value.token : '')
+
+        router.push("/")
+      }) // fare il pars del nome in position e date della sedia
       .catch((err) => console.error(err));
   }
 
@@ -55,18 +55,17 @@ export const useUserStore = defineStore("user", () => {
       .catch((err) => console.error(err));
   }
 
-  return { user, users, login, allUsers };
+  return { user, users, login, allUsers, signUp };
 });
 
 interface ActiveUser {
   token: string;
-  id: number;
+  type: string;
+  idUser: number;
+  username: string;
   firstName: string;
-  username  : string;
   lastName: string;
-  phoneNumber: string;
-  role: [ string ];
-  site: string;
+  roles: [ string ];
 }
 
 interface User {

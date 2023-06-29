@@ -20,7 +20,11 @@ enum ERole {
   "Torino",
 }
 
-const { data } = defineProps<{ data: User[] }>();
+const { data } = defineProps<{ data: User[] | null }>();
+
+setTimeout(() => {
+  console.log(data);
+}, 3000)
 
 const days = new Array(30); // da prendere dinamicamente;
 </script>
@@ -35,7 +39,7 @@ const days = new Array(30); // da prendere dinamicamente;
         </tr>
       </thead>
       <tbody>
-        <Tr v-for="u in data" name="u.name" surname="u.surname" />
+        <Tr v-for="u in data" :name="u.firstName" :surname="u.lastName" />
       </tbody>
     </table>
   </div>

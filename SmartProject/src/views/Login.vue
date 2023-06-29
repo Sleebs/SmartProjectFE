@@ -1,10 +1,18 @@
 <script setup>
 import { ref } from "vue"
 import { RouterLink } from "vue-router";
-import { useUserStore } from "../stores/userStore.ts"
+import { useUserStore } from "../stores/userStore"
 import { storeToRefs } from "pinia"
 
+const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
 
+const username = ref('')
+const password = ref('')
+
+function loginForm() {
+    userStore.login(username.value, password.value)
+}
 
 </script>
 
@@ -21,7 +29,7 @@ import { storeToRefs } from "pinia"
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
-                        <input v-model="email" id="email" name="email" type="email" autocomplete="email" required=""
+                        <input v-model="username" id="email" name="email" type="email" autocomplete="email" required=""
                             className="w-full rounded-md border-0 text-gray-900 shadow-sm" />
                     </div>
                 </div>
