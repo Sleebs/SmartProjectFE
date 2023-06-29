@@ -28,7 +28,7 @@ function addRoom() {
 
 <template>
     <div className="w-full h-full flex flex-wrap">
-        <div v-for="r in rooms" :key="r.label" className="rounded-xl m-auto mt-8" style="background-color: #003f7f3d;"
+        <div v-for="r in rooms" :key="r.nameRoom" className="rounded-xl m-auto mt-8" style="background-color: #003f7f3d;"
             :style="{ height: r.height + 'px', width: r.width + 'px' }">
             <RouterLink to="/signup">
                 <p className="w-full h-full">{{ r.nameRoom }}</p>
