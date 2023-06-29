@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const { avatar } = defineProps<{
-  avatar?: string;
+const { name, surname } = defineProps<{
   name?: string;
   surname?: string;
-  location?: string;
-  date?: Date;
 }>();
 </script>
 
@@ -12,8 +9,8 @@ const { avatar } = defineProps<{
   <tr>
     <th>20</th>
     <td>
-      <p>nome</p>
-      <p>cognome</p>
+      <p>{{ name }}</p>
+      <p>{{ surname }}</p>
     </td>
     <td className="odd:bg-base-200">x</td>
     <td className="odd:bg-base-200">x</td>

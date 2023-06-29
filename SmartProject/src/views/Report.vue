@@ -11,6 +11,8 @@ const userStore = useUserStore();
 
 const { users } = storeToRefs(userStore);
 
+const test = [{ name: "pippo", surname: "pluto" }];
+
 onMounted(() => {
   userStore.allUsers;
 });
@@ -20,7 +22,7 @@ onMounted(() => {
   <div className="flex w-full h-1/2">
     <Signup />
     <div className=" overflow-auto h-full w-3/4">
-      <HTable />
+      <HTable data="test" />
     </div>
   </div>
   <div className="h-1/2 overflow-auto">
